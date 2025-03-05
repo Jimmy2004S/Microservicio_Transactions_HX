@@ -16,11 +16,11 @@ class TransactionController extends Controller
 
         $request->validate([
             'amount' => 'required|numeric|min:0.01',
-            'from_account_id' => 'required',
+
             'to_account_id' => 'required'
         ]);
 
-        $transaction = $this->transactionService->sendTransaction($request->amount, $request->from_account_id, $request->to_account_id);
+        $transaction = $this->transactionService->sendTransaction($request->amount, $request->auth_user['id'], $request->to_account_id);
 
         if (!$transaction) {
             return response()->json([

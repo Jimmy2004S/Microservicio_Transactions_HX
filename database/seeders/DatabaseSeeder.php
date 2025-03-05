@@ -14,6 +14,10 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        Account::factory(10)->create();
+        for ($i = 1; $i < 12; $i++) {
+            Account::factory()->create([
+                'user_id' => $i
+            ]);
+        }
     }
 }

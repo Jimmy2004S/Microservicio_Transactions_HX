@@ -17,7 +17,7 @@ class TransactionService implements ITransactionService
     {
         try {
             $transaction = $this->transactionRepository->createTransaction(
-                'income',
+                'outcome',
                 $amount,
                 $from_account_id,
                 $to_account_id,
