@@ -2,6 +2,7 @@
 
 namespace Src\Infraestructure\persistence\repositories;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Date;
 use Src\Domain\Entities\ITransaction;
 use Src\Domain\Repositories\ITransactionRepository;
@@ -21,6 +22,7 @@ class TransactionRepository implements ITransactionRepository
 
         $transaction = ModelsTransaction::create([
             'type'              => $type,
+            'status'            => $status,
             'amount'            => $amount,
             'from_account_id'   => $from_account_id,
             'to_account_id'     => $to_account_id
@@ -31,7 +33,7 @@ class TransactionRepository implements ITransactionRepository
             $transaction->status,
             $transaction->type,
             $transaction->amount,
-            $transaction->created_at,
+            $transaction->created_at->format('Y-m-d H:i:s'),
             $transaction->from_account_id,
             $transaction->to_account_id
         );
