@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Src\Interfaces\Http\controllers\TransactionController;
+use Src\Interfaces\http\middlewares\AuthMiddleware;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -10,4 +11,5 @@ Route::get('/user', function (Request $request) {
 
 
 
-Route::post('/transactions/send', [TransactionController::class, 'send'])->name('transactions.send');
+
+Route::post('/transactions/send', [TransactionController::class, 'send'])->middleware([AuthMiddleware::class])->name('transactions.send');
