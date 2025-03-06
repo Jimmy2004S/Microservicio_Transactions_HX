@@ -6,5 +6,5 @@ use Src\Domain\Entities\IAccount;
 
 interface IAccountService
 {
-    public function createAccount($balance, $number, $placeholder, $cvc, $due_date, $user_id): IAccount;
+    public function createAccount($placeholder, $user_id);
 }

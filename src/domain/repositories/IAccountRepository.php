@@ -12,8 +12,8 @@ interface IAccountRepository
         float $balance,
         int $number,
         string $placeholder,
-        int $cvc,
-        Date $due_date,
+        string $cvc,
+        string $due_date,
         int $user_id
-    ): IAccount;
+    );
 }

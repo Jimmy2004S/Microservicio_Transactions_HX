@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->id();
             $table->float('balance', 10, 2);
-            $table->integer('number');
+            $table->bigInteger('number');
             $table->string('cvc');
             $table->string('placeholder');
             $table->date('due_date');

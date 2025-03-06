@@ -14,7 +14,7 @@ class Account extends Model
     protected $table = 'accounts';
 
 
-    protected $fillable = ['user_id', 'balance', 'placeholder', 'due_date', 'number'];
+    protected $fillable = ['user_id', 'balance', 'placeholder', 'due_date', 'number', 'cvc'];
 
     public function transactions(): HasMany
     {

@@ -14,12 +14,12 @@ class AccountRepository implements IAccountRepository
         float $balance,
         int $number,
         string $placeholder,
-        int $cvc,
-        Date $due_date,
+        string $cvc,
+        string $due_date,
         int $user_id
-    ): IAccount {
+    ) {
 
-        $account = ModelsAccount::create([
+        return ModelsAccount::create([
             'balance' => $balance,
             'number' => $number,
             'cvc' => $cvc,
@@ -27,15 +27,5 @@ class AccountRepository implements IAccountRepository
             'due_date' => $due_date,
             'user_id' => $user_id,
         ]);
-
-        return new IAccount(
-            $account->id,
-            $account->balance,
-            $account->number,
-            $account->placeholder,
-            $account->cvc,
-            $account->due_date,
-            $account->user_id,
-        );
     }
 }
