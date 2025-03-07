@@ -12,7 +12,9 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-
+Route::get('/', function (Request $request) {
+    return 'Hellow world';
+});
 
 Route::post('/transactions/send', [TransactionController::class, 'send'])->middleware([AuthMiddleware::class])->name('transactions.send');
 

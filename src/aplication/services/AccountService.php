@@ -2,6 +2,7 @@
 
 namespace Src\aplication\services;
 
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Src\Domain\Entities\IAccount;
 use Src\Domain\Repositories\IAccountRepository;
@@ -18,16 +19,20 @@ class AccountService implements IAccountService
 
         $balance = 0;
         $cvc = $this->generateCVC();
-        $hashedCVC = Hash::make($cvc);
+        $encryptedCVC = Crypt::encryptString($cvc);
         $number = $this->generateAccountNumber($user_id);
         $due_date = $this->generateDueDate();
-        $account = $this->accountRepository->createAccount($balance, $number, $placeholder, $hashedCVC, $due_date, $user_id);
+        $account = $this->accountRepository->createAccount($balance, $number, $placeholder, $encryptedCVC, $due_date, $user_id);
 
         if (!$account) return null;
 
         return $account;
     }
 
+    public function getAccountByNumber(int $number)
+    {
+        return $this->accountRepository->where('number', $number);
+    }
 
     function generateAccountNumber($userId)
     {

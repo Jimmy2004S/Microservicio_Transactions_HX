@@ -11,16 +11,20 @@ class TransactionService implements ITransactionService
 {
     public function __construct(
         private ITransactionRepository $transactionRepository,
+        private IAccountRepository $accountRepository
     ) {}
 
-    public function sendTransaction($amount, $from_account_id, $to_account_id)
+    public function sendTransaction($amount, $from_account_id, $to_account_number)
     {
         try {
+
+            $to_account = $this->accountRepository->where('number', $to_account_number);
+
             $transaction = $this->transactionRepository->createTransaction(
                 'outcome',
                 $amount,
                 $from_account_id,
-                $to_account_id,
+                $to_account->id,
                 'succesfull'
             );
 

@@ -6,9 +6,20 @@ use Illuminate\Support\Facades\Http;
 
 class AuthService
 {
-    public function getUserFromToken(string $token)
+    public static string $url = 'https://api.example.com'; // Asegúrate de definir una URL válida
+    public static array $endPoints = [
+        'validateToken' => 'auth/validate-token'
+    ];
+
+    public static function getUserFromToken(string $token)
     {
-        $response = Http::withToken($token)->get(env('AUTH_SERVICE_URL') . "/auth/user");
+
+        $url = self::$url . '/' . self::$endPoints['validateToken'];
+
+        $response = Http::withHeaders([
+            'Authorization' => "Bearer $token"
+        ])->get($url);
+
         return $response->successful() ? $response->json() : null;
     }
 }

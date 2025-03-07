@@ -16,4 +16,6 @@ interface IAccountRepository
         string $due_date,
         int $user_id
     );
+
+    public function where(string $param, string $value);
 }
