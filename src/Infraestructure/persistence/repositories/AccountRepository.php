@@ -34,15 +34,20 @@ class AccountRepository implements IAccountRepository
     public function where(string $param, string $value)
     {
         return ModelsAccount::where($param, $value)->get()->map(function ($account) {
-            return new IAccount(
-                $account->id,
-                $account->balance,
-                $account->number,
-                $account->placeholder,
-                Crypt::decryptString($account->cvc),
-                $account->due_date,
-                $account->user_id,
-            );
+            return [
+                'id' => $account->id,
+                'balance' => $account->balance,
+                'number' => $account->number,
+                'placeholder' => $account->placeholder,
+                'cvc' => Crypt::decryptString($account->cvc),
+                'due_date' => $account->due_date,
+                'user_id' => $account->user_id,
+            ];
         });
+    }
+
+    public function update(int $id, array $data)
+    {
+        return ModelsAccount::find($id)->update($data);
     }
 }

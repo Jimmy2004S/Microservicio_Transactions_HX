@@ -5,6 +5,7 @@ namespace Src\Domain\Repositories;
 use Illuminate\Support\Facades\Date;
 use Src\Domain\Entities\Account;
 use Src\Domain\Entities\IAccount;
+use Src\Infraestructure\Persistence\Models\Account as ModelsAccount;
 
 interface IAccountRepository
 {
@@ -18,4 +19,6 @@ interface IAccountRepository
     );
 
     public function where(string $param, string $value);
+
+    public function update(int $id, array $data);
 }
