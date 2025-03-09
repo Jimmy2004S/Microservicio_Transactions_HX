@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\ServiceProvider;
+use Src\Aplication\Services\TransactionService;
 use Src\Domain\Repositories\IAccountRepository;
 use Src\Domain\Repositories\ITransactionRepository;
+use Src\domain\services\ITransactionService;
 use Src\Infraestructure\persistence\repositories\AccountRepository;
 use Src\Infraestructure\persistence\repositories\TransactionRepository;
 
@@ -18,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(ITransactionRepository::class, TransactionRepository::class);
         $this->app->bind(IAccountRepository::class, AccountRepository::class);
+        $this->app->bind(ITransactionService::class, TransactionService::class);
     }
 
     /**
