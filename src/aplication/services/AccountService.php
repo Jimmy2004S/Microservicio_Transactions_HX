@@ -2,11 +2,13 @@
 
 namespace Src\aplication\services;
 
+use Exception;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
 use Src\Domain\Entities\IAccount;
 use Src\Domain\Repositories\IAccountRepository;
 use Src\domain\services\IAccountService;
+use Src\Infraestructure\Api\LogService;
 
 class AccountService implements IAccountService
 {
@@ -16,17 +18,20 @@ class AccountService implements IAccountService
 
     public function createAccount($placeholder, $user_id)
     {
+        try {
+            $balance = 0;
+            $cvc = $this->generateCVC();
+            $encryptedCVC = Crypt::encryptString($cvc);
+            $number = $this->generateAccountNumber($user_id);
+            $due_date = $this->generateDueDate();
+            $account = $this->accountRepository->createAccount($balance, $number, $placeholder, $encryptedCVC, $due_date, $user_id);
 
-        $balance = 0;
-        $cvc = $this->generateCVC();
-        $encryptedCVC = Crypt::encryptString($cvc);
-        $number = $this->generateAccountNumber($user_id);
-        $due_date = $this->generateDueDate();
-        $account = $this->accountRepository->createAccount($balance, $number, $placeholder, $encryptedCVC, $due_date, $user_id);
+            if (!$account) return null;
 
-        if (!$account) return null;
-
-        return $account;
+            return $account;
+        } catch (Exception $e) {
+            LogService::store('account', 'post', $e->getMessage());
+        }
     }
 
     public function getAccountByNumber(int $number)
