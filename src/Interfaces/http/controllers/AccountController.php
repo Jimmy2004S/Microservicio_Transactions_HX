@@ -31,4 +31,20 @@ class AccountController extends Controller
             'data' => $account
         ], 201);
     }
+
+    public function find(Request $request)
+    {
+
+        $account = $this->accountService->getAccountById($request->id);
+
+        if (!$account) {
+            return response()->json([
+                'error' => 'Account not found'
+            ], 404);
+        }
+
+        return response()->json([
+            'data' => $account
+        ], 200);
+    }
 }

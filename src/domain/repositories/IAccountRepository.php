@@ -20,5 +20,7 @@ interface IAccountRepository
 
     public function where(string $param, string $value);
 
+    public function find(int $id);
+
     public function update(int $id, array $data);
 }

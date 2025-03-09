@@ -19,3 +19,4 @@ Route::get('/', function (Request $request) {
 Route::post('/transactions/send', [TransactionController::class, 'send'])->middleware([AuthMiddleware::class])->name('transactions.send');
 
 Route::post('/account', [AccountController::class, 'create'])->name('transactions.send');
+Route::get('/account/{id}', [AccountController::class, 'find'])->name('transactions.send');

@@ -50,4 +50,9 @@ class AccountRepository implements IAccountRepository
     {
         return ModelsAccount::find($id)->update($data);
     }
+
+    public function find(int $id)
+    {
+        return ModelsAccount::find($id);
+    }
 }
