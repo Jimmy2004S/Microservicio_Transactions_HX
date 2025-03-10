@@ -22,19 +22,19 @@ El proyect está estructurado de la siguiente manera:
 
 ### ✨ Funcionalidades Actuales
 
-✅ Transferencia de dinero entre cuentas bancarias.
-✅ Creación y consulta de cuentas bancarias.
-✅ Middleware de autenticación basado en un servicio externo.
-✅ Notificación por correo electrónico en cada transacción.
+- ✅ Transferencia de dinero entre cuentas bancarias.
+- ✅ Creación y consulta de cuentas bancarias.
+- ✅ Middleware de autenticación basado en un servicio externo.
+- ✅ Notificación por correo electrónico en cada transacción.
 
 📡 Endpoints y Consumo
 
 ### 🔹 1. Enviar dinero
 
-Endpoint: /transactions/send
-metodo POST
-Middleware: AuthMiddleware
-headers: Authorization token
+- Endpoint: /transactions/send
+- metodo POST
+- Middleware: AuthMiddleware
+- headers: Authorization token
 
 📌 Body (JSON):
 
@@ -61,7 +61,8 @@ headers: Authorization token
 
 ### 🔹 2. Crear una cuenta bancaria
 
-Endpoint: /accountMétodo: POST
+- Endpoint: /account
+- Método: POST
 
 📌 Body (JSON):
 
@@ -89,8 +90,8 @@ Endpoint: /accountMétodo: POST
 
 ### 🔹 3. Consultar una cuenta
 
-Endpoint: /account/{id}
-Método: GET
+- Endpoint: /account/{id}
+- Método: GET
 
 📌 Ejemplo de respuesta:
 
