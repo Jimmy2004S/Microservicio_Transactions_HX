@@ -6,20 +6,21 @@ Este proyecto implementa una API de transacciones bancarias con arquitectura Hex
 
 El proyect está estructurado de la siguiente manera:
 
-📂 app
-    📂 Providers ( contenedor ser servicios para inyecion de dependencias )
-📂 database
-    📂 Migrations ( migraciones y definicion de la estructura de la BD )
-📂 routes
-    📂 api ( rutas para desplegar la api )
-📂 src
-    📂 Application (Casos de uso y lógica de negocio)
-    📂 Domain (Entidades y modelos de dominio)
-    📂 Infrastructure (Servicios externos, persistencia, etc.)
-    📂 Interfaces (Controladores y Middleware)
+    📂 app
+        📂 Providers (contenedor de servicios para inyección de dependencias)
+    📂 database
+        📂 Migrations (migraciones y definición de la estructura de la BD)
+    📂 routes
+        📂 api (rutas para desplegar la API)
+    📂 src
+        📂 Application (Casos de uso y lógica de negocio)
+        📂 Domain (Entidades y modelos de dominio)
+        📂 Infrastructure (Servicios externos, persistencia, etc.)
+        📂 Interfaces (Controladores t middleware)
+        
+        
 
-
-✨ Funcionalidades Actuales
+### ✨ Funcionalidades Actuales
 
 ✅ Transferencia de dinero entre cuentas bancarias.
 ✅ Creación y consulta de cuentas bancarias.
