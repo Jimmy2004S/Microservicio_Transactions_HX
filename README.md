@@ -4,30 +4,46 @@ Este proyecto implementa una API de transacciones bancarias con arquitectura Hex
 
 🚀 Arquitectura
 
-El proyecto está estructurado de la siguiente manera:
+El proyect está estructurado de la siguiente manera:
 
+📂 app
+    📂 Providers ( contenedor ser servicios para inyecion de dependencias )
+📂 database
+    📂 Migrations ( migraciones y definicion de la estructura de la BD )
+📂 routes
+    📂 api ( rutas para desplegar la api )
 📂 src
- ├── 📂 Application (Casos de uso y lógica de negocio)
- ├── 📂 Domain (Entidades y modelos de dominio)
- ├── 📂 Infrastructure (Servicios externos, persistencia, etc.)
- ├── 📂 Interfaces (Controladores y Middleware)
+    📂 Application (Casos de uso y lógica de negocio)
+    📂 Domain (Entidades y modelos de dominio)
+    📂 Infrastructure (Servicios externos, persistencia, etc.)
+    📂 Interfaces (Controladores y Middleware)
+
 
 ✨ Funcionalidades Actuales
 
-✅ Transferencia de dinero entre cuentas bancarias.✅ Creación y consulta de cuentas bancarias.✅ Middleware de autenticación basado en un servicio externo.✅ Notificación por correo electrónico en cada transacción.
+✅ Transferencia de dinero entre cuentas bancarias.
+✅ Creación y consulta de cuentas bancarias.
+✅ Middleware de autenticación basado en un servicio externo.
+✅ Notificación por correo electrónico en cada transacción.
+
 
 📡 Endpoints y Consumo
 
-🔹 1. Enviar dinero
+### 🔹 1. Enviar dinero
 
-Endpoint: /transactions/sendMétodo: POSTMiddleware: AuthMiddleware
+Endpoint: /transactions/send
+metodo POST
+Middleware: AuthMiddleware
+headers: Authorization token
 
 📌 Body (JSON):
 
+´´´json
 {
   "amount": 100,
-  "to_account_number": "12345678"
+  "to_account_number": "40000000000001"
 }
+´´´
 
 📌 Respuesta:
 
@@ -41,7 +57,7 @@ Endpoint: /transactions/sendMétodo: POSTMiddleware: AuthMiddleware
   "to_account_id": 5
 }
 
-🔹 2. Crear una cuenta bancaria
+### 🔹 2. Crear una cuenta bancaria
 
 Endpoint: /accountMétodo: POST
 
@@ -57,8 +73,8 @@ Endpoint: /accountMétodo: POST
 {
   "data": {
     "id": 5,
-    "balance": 0,
-    "number": "87654321",
+    "balance": 1000000, // default para pruebas
+    "number": "40000000000001",
     "placeholder": "John Doe",
     "due_date": "2026-12-31",
     "user_id": 10
@@ -67,7 +83,8 @@ Endpoint: /accountMétodo: POST
 
 🔹 3. Consultar una cuenta
 
-Endpoint: /account/{id}Método: GET
+Endpoint: /account/{id}
+Método: GET
 
 📌 Ejemplo de respuesta:
 
