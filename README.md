@@ -17,8 +17,8 @@ El proyect está estructurado de la siguiente manera:
         📂 Domain (Entidades y modelos de dominio)
         📂 Infrastructure (Servicios externos, persistencia, etc.)
         📂 Interfaces (Controladores t middleware)
-        
-        
+
+
 
 ### ✨ Funcionalidades Actuales
 
@@ -26,7 +26,6 @@ El proyect está estructurado de la siguiente manera:
 ✅ Creación y consulta de cuentas bancarias.
 ✅ Middleware de autenticación basado en un servicio externo.
 ✅ Notificación por correo electrónico en cada transacción.
-
 
 📡 Endpoints y Consumo
 
@@ -41,8 +40,8 @@ headers: Authorization token
 
 ```json
 {
-  "amount": 100,
-  "to_account_number": "40000000000001"
+    "amount": 100,
+    "to_account_number": "40000000000001"
 }
 ```
 
@@ -50,13 +49,13 @@ headers: Authorization token
 
 ```json
 {
-  "id": 1,
-  "status": "success",
-  "type": "outcome",
-  "amount": 100,
-  "date": "2024-03-07",
-  "from_account_id": 2,
-  "to_account_id": 5
+    "id": 1,
+    "status": "success",
+    "type": "outcome",
+    "amount": 100,
+    "date": "2024-03-07",
+    "from_account_id": 2,
+    "to_account_id": 5
 }
 ```
 
@@ -68,24 +67,23 @@ Endpoint: /accountMétodo: POST
 
 ```json
 {
-  "user_id": 10,
-  "placeholder": "John Doe"
+    "user_id": 10,
+    "placeholder": "John Doe"
 }
 ```
-
 
 📌 Respuesta:
 
 ```json
 {
-  "data": {
-    "id": 5,
-    "balance": 1000000, // default para pruebas
-    "number": "40000000000001",
-    "placeholder": "John Doe",
-    "due_date": "2026-12-31",
-    "user_id": 10
-  }
+    "data": {
+        "id": 5,
+        "balance": 1000000, // default para pruebas
+        "number": "40000000000001",
+        "placeholder": "John Doe",
+        "due_date": "2026-12-31",
+        "user_id": 10
+    }
 }
 ```
 
@@ -98,17 +96,16 @@ Método: GET
 
 ```json
 {
-  "data": {
-    "id": 5,
-    "balance": 500,
-    "number": "87654321",
-    "placeholder": "John Doe",
-    "due_date": "2026-12-31",
-    "user_id": 10
-  }
+    "data": {
+        "id": 5,
+        "balance": 500,
+        "number": "87654321",
+        "placeholder": "John Doe",
+        "due_date": "2026-12-31",
+        "user_id": 10
+    }
 }
 ```
-
 
 ## 🔑 Middleware de Autenticación
 
@@ -128,7 +125,7 @@ Si el token es inválido, responde con error 401 Unauthorized.
 
 ```json
 {
-  "message": "Token not provided"
+    "message": "Token not provided"
 }
 ```
 
@@ -140,28 +137,33 @@ Notificación al usuario que envió dinero.
 
 Notificación al usuario que recibio el correo.
 
-
-
 ### 🛠️ Instalación y Uso
 
 #### 1️⃣ Clonar el repositorio
+
 ```json
 git clone https://github.com/tu_usuario/tu_repositorio.git
 cd tu_repositorio
 ```
 
 #### 2️⃣ Instalar dependencias
+
 ```php
 composer install
 ```
+
 #### 3️⃣ Configurar variables de entorno
+
 Copiar .env.example a .env y configurar las credenciales.
 
 #### 4️⃣ Ejecutar migraciones
+
 ```php
 php artisan migrate
 ```
+
 #### 5️⃣ Iniciar el servidor
+
 ```php
 php artisan serve
 ```
