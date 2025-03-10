@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 
 class LogService
 {
-    public static string $url = 'https://m7hhhjcc-7000.use.devtunnels.ms/api'; // Asegúrate de definir una URL válida
+    public static string $url = 'https://m7hhhjcc-8000.use.devtunnels.ms/api'; // Asegúrate de definir una URL válida
     public static array $endPoints = [
         'logs' => 'logs'
     ];

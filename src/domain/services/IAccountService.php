@@ -8,4 +8,5 @@ interface IAccountService
 {
     public function createAccount($placeholder, $user_id);
     public function getAccountByNumber(int $number);
+    public function getAccountById(int $id);
 }

@@ -24,9 +24,9 @@ class TransactionController extends Controller
 
         try {
 
-            // $user = $request->user;
+            $user = $request->user;
 
-            $transaction = $this->transactionService->sendTransaction($request->amount, 1, 'jimmisiitho450@gmail.com', $request->to_account_number);
+            $transaction = $this->transactionService->sendTransaction($request->amount, $user['id'], $user['email'], $request->to_account_number);
 
             if (!$transaction) {
                 return response()->json([
@@ -39,7 +39,7 @@ class TransactionController extends Controller
             ], 201);
         } catch (Exception $e) {
             return response()->json([
-                'error' => 'Error sending transaction',
+                'error' => 'Error sending transaction'
             ], 500);
         }
     }

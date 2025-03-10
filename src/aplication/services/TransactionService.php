@@ -56,6 +56,7 @@ class TransactionService implements ITransactionService
                 );
 
 
+
                 if (!$transaction) {
                     throw new Exception('Error al crear la transacción');
                 }
@@ -63,14 +64,13 @@ class TransactionService implements ITransactionService
                 // Enviar correo
                 ApiEmailService::send($user_email, 'transaction', [
                     'amount' => $amount,
-                    'type' => 'income'
+                    'type' => 'outcome'
                 ]);
 
                 return $transaction->toArray();
             });
         } catch (Exception $e) {
-            dd($e->getMessage());
-            // LogService::store('transaction', 'post', $e->getMessage());
+            LogService::store('transaction', 'post', $e->getMessage());
             throw new Exception();
         }
     }

@@ -20,3 +20,8 @@ Route::post('/transactions/send', [TransactionController::class, 'send'])->middl
 
 Route::post('/account', [AccountController::class, 'create'])->name('transactions.send');
 Route::get('/account/{id}', [AccountController::class, 'find'])->name('transactions.send');
+
+Route::post('transactions/purchase', [TransactionController::class, 'send'])->name('transactions.purchase')->middleware([AuthMiddleware::class]);
+
+
+Route::post('transactions/recharge', [TransactionController::class, 'send'])->name('transactions.purchase');

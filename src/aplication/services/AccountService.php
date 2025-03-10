@@ -19,7 +19,7 @@ class AccountService implements IAccountService
     public function createAccount($placeholder, $user_id)
     {
         try {
-            $balance = 0;
+            $balance = 1000000;
             $cvc = $this->generateCVC();
             $encryptedCVC = Crypt::encryptString($cvc);
             $number = $this->generateAccountNumber($user_id);
@@ -28,6 +28,7 @@ class AccountService implements IAccountService
 
             if (!$account) return null;
 
+            $account->cvc = $cvc;
             return $account;
         } catch (Exception $e) {
             LogService::store('account', 'post', $e->getMessage());
@@ -37,6 +38,15 @@ class AccountService implements IAccountService
     public function getAccountByNumber(int $number)
     {
         return $this->accountRepository->where('number', $number);
+    }
+
+    public function getAccountById(int $id)
+    {
+        try {
+            return $this->accountRepository->find($id);
+        } catch (Exception $e) {
+            LogService::store('account', 'get', $e->getMessage());
+        }
     }
 
     function generateAccountNumber($userId)
