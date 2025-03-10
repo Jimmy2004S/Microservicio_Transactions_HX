@@ -38,15 +38,16 @@ headers: Authorization token
 
 📌 Body (JSON):
 
-´´´json
+```json
 {
   "amount": 100,
   "to_account_number": "40000000000001"
 }
-´´´
+```
 
 📌 Respuesta:
 
+```json
 {
   "id": 1,
   "status": "success",
@@ -56,6 +57,7 @@ headers: Authorization token
   "from_account_id": 2,
   "to_account_id": 5
 }
+```
 
 ### 🔹 2. Crear una cuenta bancaria
 
@@ -63,13 +65,17 @@ Endpoint: /accountMétodo: POST
 
 📌 Body (JSON):
 
+```json
 {
   "user_id": 10,
   "placeholder": "John Doe"
 }
+```
+
 
 📌 Respuesta:
 
+```json
 {
   "data": {
     "id": 5,
@@ -80,14 +86,16 @@ Endpoint: /accountMétodo: POST
     "user_id": 10
   }
 }
+```
 
-🔹 3. Consultar una cuenta
+### 🔹 3. Consultar una cuenta
 
 Endpoint: /account/{id}
 Método: GET
 
 📌 Ejemplo de respuesta:
 
+```json
 {
   "data": {
     "id": 5,
@@ -98,12 +106,14 @@ Método: GET
     "user_id": 10
   }
 }
+```
 
-🔑 Middleware de Autenticación
+
+## 🔑 Middleware de Autenticación
 
 El middleware AuthMiddleware valida el token del usuario antes de procesar ciertas solicitudes.
 
-📌 Flujo de autenticación:
+#### 📌 Flujo de autenticación:
 
 El middleware obtiene el token del encabezado Authorization.
 
@@ -115,47 +125,46 @@ Si el token es inválido, responde con error 401 Unauthorized.
 
 📌 Ejemplo de respuesta en caso de error:
 
+```json
 {
   "message": "Token not provided"
 }
+```
 
-📩 Notificaciones por Correo
+### 📩 Notificaciones por Correo
 
 Cada transacción genera dos correos electrónicos:
 
 Notificación al usuario que envió dinero.
 
-Notificación al correo jimmy.jimenez@unicolombo.edu.co informando la recepción de fondos.
+Notificación al usuario que recibio el correo.
 
-📌 Ejemplo de datos enviados a ApiEmailService::send():
 
-ApiEmailService::send($user_email, 'transaction', [
-  'amount' => $amount,
-  'type' => 'outcome'
-]);
 
-🛠️ Instalación y Uso
+### 🛠️ Instalación y Uso
 
-1️⃣ Clonar el repositorio
-
+#### 1️⃣ Clonar el repositorio
+```json
 git clone https://github.com/tu_usuario/tu_repositorio.git
 cd tu_repositorio
+```
 
-2️⃣ Instalar dependencias
-
+#### 2️⃣ Instalar dependencias
+```php
 composer install
-
-3️⃣ Configurar variables de entorno
+```
+#### 3️⃣ Configurar variables de entorno
 Copiar .env.example a .env y configurar las credenciales.
 
-4️⃣ Ejecutar migraciones
-
+#### 4️⃣ Ejecutar migraciones
+```php
 php artisan migrate
-
-5️⃣ Iniciar el servidor
-
+```
+#### 5️⃣ Iniciar el servidor
+```php
 php artisan serve
+```
 
-📄 Licencia
+#### 📄 Licencia
 
 Este proyecto está bajo la licencia MIT. ¡Siéntete libre de usarlo y contribuir! 🎉
